@@ -11,28 +11,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
+@Test
 public class testsfdc extends ReusableMethods {
 	
 	
 	
-	public static void main(String[] args) throws InterruptedException {
+	
+	//public static void main(String[] args) throws InterruptedException {
 		
-		initializeDriver();
-		CreateReport();
+		
 		
 		
 	  
 		//driver.manage().window().maximize();
 		
 		//Thread.sleep(3000);
-	/*	LoginErrMsg_1();
+		//LoginErrMsg_1();
 		//Thread.sleep(3000);
-		LoginToSfdc_2();
+		/*LoginToSfdc_2();
 		Thread.sleep(3000);
 		
 		check_RememberMe();
@@ -56,26 +57,27 @@ public class testsfdc extends ReusableMethods {
 		Thread.sleep(3000);
 		TC_11();
 		//Thread.sleep(3000);
-		TC_12();
-		Thread.sleep(3000);
-		TC_13();
-		Thread.sleep(3000);
-		TC_14();
+		TC_12();*/
+		//Thread.sleep(3000);
+	//	TC_13();
+	//	Thread.sleep(3000);
+		/*TC_14();
 		Thread.sleep(3000);
 		TC_15();
 		Thread.sleep(3000);
 		TC_16();
 		TC_17();
-		TC_18();*/
-		TC_19();
-		CloseBrowser();
-		CloseReport();
+		TC_18();
+		TC_19();*/
 		
 		
-	}
 		
-		public static void LoginErrMsg_1() throws InterruptedException{
+	
 		
+		public void LoginErrMsg_1() throws InterruptedException{
+		
+			initializeDriver();
+			CreateReport();
 			logger = report.startTest("Login Error Messsage");
 			 OpenUrl("https://login.salesforce.com");
 			Thread.sleep(6000);
@@ -101,13 +103,16 @@ public class testsfdc extends ReusableMethods {
 	    		logger.log(LogStatus.ERROR, "Error message displayed is not right");
 	    		System.out.println("Error msg not displayed. test case fail");
 	    	}
-	    	
+	    	CloseBrowser();
+		
 				
 	}
-		
-		public static void LoginToSfdc_2() throws InterruptedException
+		@Test
+		public void LoginToSfdc_2() throws InterruptedException
 		{
 			
+			initializeDriver();
+			CreateReport();
 			logger = report.startTest("Login to sfdc - TC2");
 			 OpenUrl("https://login.salesforce.com");
 			 Thread.sleep(3000);
@@ -128,13 +133,17 @@ public class testsfdc extends ReusableMethods {
 			String ValidateTitle ="Home Page ~ Salesforce - Developer Edition";
 			WebElement ActualTitle = driver.findElement(By.xpath("/html/head/title"));
 			System.out.println(ActualTitle.getText());
+			CloseBrowser();
 			
 			
 		}
 		
-		public static void check_RememberMe() throws InterruptedException
+		@Test
+		public void check_RememberMe() throws InterruptedException
 		{
 			
+			initializeDriver();
+			CreateReport();
 			logger = report.startTest("Check - remember me - TC3");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -173,11 +182,18 @@ public class testsfdc extends ReusableMethods {
 				logger.log(LogStatus.ERROR, "Username not saved");
 				System.out.println("Username is not saved, Test case fail");
 		    }
+			CloseBrowser();
+		
 			
 		}
 		
-		public static void testforgotPassword()
+		@Test
+		public void testforgotPassword() throws InterruptedException
 		{
+			Thread.sleep(3000);
+			initializeDriver();
+			CreateReport();
+			OpenUrl("https://login.salesforce.com");
 			logger=report.startTest("Testing forgot password");
 			logger.log(LogStatus.INFO, "Url successfully opened");
 			WebElement forgotpass = driver.findElement(By.xpath("//*[@id=\"forgot_password_link\"]"));
@@ -205,11 +221,17 @@ public class testsfdc extends ReusableMethods {
 			}
 			WebElement returnToLogin = driver.findElement(By.xpath("//*[@id=\"forgotPassForm\"]/a"));
 			Click(returnToLogin,"Return to login");
+			CloseBrowser();
+			
 			
 		}
 		
-		public static void forgotPassword4B() throws InterruptedException
+		@Test
+		public void forgotPassword4B() throws InterruptedException
 		{
+			
+			initializeDriver();
+			CreateReport();
 			logger = report.startTest("Testing forgot password 4B");
 			
 			OpenUrl("https://login.salesforce.com");
@@ -240,12 +262,16 @@ public class testsfdc extends ReusableMethods {
 			{
 				logger.log(LogStatus.ERROR, "Error message not displayed");
 			}
-		
+			CloseBrowser();
+	
 			
 			}
-		 public static void TC_05() throws InterruptedException
+		 @Test
+		public void TC_05() throws InterruptedException
 		 {
-		 
+			 Thread.sleep(3000);
+			 initializeDriver();
+				CreateReport();
 	     logger= report.startTest("Starting test case TC_05");
 	     OpenUrl("https://login.salesforce.com");
 	     WebElement crossmarkclick = driver.findElement(By.xpath("//*[@id=\"clear_link\"]/img"));
@@ -274,12 +300,18 @@ public class testsfdc extends ReusableMethods {
 			 logger.log(LogStatus.ERROR, "My profile does not display");
 		 }
 		
-		 
+		 CloseBrowser();
+			
 		 }
 		
-	 public static void TC_06() throws InterruptedException
+	 @Test
+	public void TC_06() throws InterruptedException
 		 {
-			 logger=report.startTest("Starting testcase TC_06");
+			 
+		Thread.sleep(3000);
+		 initializeDriver();
+			CreateReport();
+		 logger=report.startTest("Starting testcase TC_06");
 			 OpenUrl("https://login.salesforce.com");
 			 WebElement editlist = driver.findElement(By.xpath("//*[@id=\"edit\"]"));
 			 Click(editlist,"Edit list");
@@ -392,12 +424,15 @@ public class testsfdc extends ReusableMethods {
 			 Thread.sleep(3000);
 			 Click(savephotoaftercropping,"Save photo after cropping"); 
 			
-			 
+			 CloseBrowser();
+			
 		 }
 	     
-	    public static void TC_07() throws InterruptedException
+	    @Test
+		public void TC_07() throws InterruptedException
 	    {
-	    	
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("Starting test case TC_07");
 	    	OpenUrl("https://login.salesforce.com");
 	    //	 WebElement editlist = driver.findElement(By.xpath("//*[@id=\"edit\"]"));
@@ -475,9 +510,11 @@ public class testsfdc extends ReusableMethods {
 			 WebElement openreminder = driver.findElement(By.xpath("//*[@id=\"testbtn\"]"));
 			 Click(openreminder,"Open reminder");
 			 Thread.sleep(3000);
-	    	
+			 CloseBrowser();
+		
 	    }
-	    public static boolean isFileDownloaded_Extension(String dirPath, String extension) {
+	    @Test
+		public boolean isFileDownloaded_Extension(String dirPath, String extension) {
 	        boolean flag = false;
 	        File dir = new File("C:\\Users\\kikke\\Downloads\\");
 	        File[] files = dir.listFiles();
@@ -492,8 +529,11 @@ public class testsfdc extends ReusableMethods {
 	        }
 	        return flag;
 	       }
-	 public static void TC_08() throws InterruptedException {
+	 @Test
+	public void TC_08() throws InterruptedException {
 
+		 initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("Starting test case TC_08");
 	    	OpenUrl("https://login.salesforce.com");
 	   
@@ -523,13 +563,16 @@ public class testsfdc extends ReusableMethods {
 			 driver.getWindowHandle();
 			  driver.close();
 			  Thread.sleep(3000);
-			 
+			  CloseBrowser();
+		
 		 
 	 }
 	 
-	 public static void TC_09() throws InterruptedException
+	 @Test
+	public void TC_09() throws InterruptedException
 	 {
-		   
+		 initializeDriver();
+			CreateReport();
 		    logger = report.startTest(" TC9");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -548,11 +591,15 @@ public class testsfdc extends ReusableMethods {
 			WebElement logoutBtn = driver.findElement(By.xpath("//*[@id=\"userNav-menuItems\"]/a[5]"));
 			logoutBtn.click();
 			Thread.sleep(3000);
-		 
+			CloseBrowser();
+			
 	 }
 		 
-	    public static void TC_10() throws InterruptedException
+	    @Test
+		public void TC_10() throws InterruptedException
 	    {
+	    	initializeDriver();
+			CreateReport();
 	    	    logger = report.startTest("TC10");
 				OpenUrl("https://login.salesforce.com");
 				WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -587,11 +634,15 @@ public class testsfdc extends ReusableMethods {
 				WebElement save = driver.findElement(By.xpath("//*[@id=\"bottomButtonRow\"]/input[1]"));
 				Click(save, "Save");
 				Thread.sleep(3000);
+				CloseBrowser();
 				
 	    	
 	    }
-	    public static void TC_11() throws InterruptedException
+	    @Test
+		public void TC_11() throws InterruptedException
 	    {
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("TC11");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -620,11 +671,15 @@ public class testsfdc extends ReusableMethods {
 			WebElement save = driver.findElement(By.xpath("//*[@id=\"editPage\"]/div[1]/table/tbody/tr/td[2]/input[1]"));
 			Click(save,"save");
 			Thread.sleep(3000);
+			CloseBrowser();
 			
 	    }
 	    
-	    public static void TC_12() throws InterruptedException
+	    @Test
+		public void TC_12() throws InterruptedException
 	    {
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("TC12");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -648,7 +703,7 @@ public class testsfdc extends ReusableMethods {
 			Thread.sleep(3000);
 			EnterText(editview,"Rachana","Edit view");
 			Thread.sleep(6000);
-			WebElement EditBtn = driver.findElement(By.xpath("//*[@id=\"00B6g00000BfJy9_filterLinks\"]/a[1]"));
+			WebElement EditBtn = driver.findElement(By.xpath("//div[@id='00B6g00000BOsjJ_filterLinks']//a[contains(text(),'Edit')]"));
 			Click(EditBtn,"Edit button");
 			Thread.sleep(3000);
 			WebElement editviewname = driver.findElement(By.xpath("//*[@id=\"fname\"]"));
@@ -679,13 +734,18 @@ public class testsfdc extends ReusableMethods {
 			             } 
 			           }
 			         }  */
-			
+			CloseBrowser();
+		
 	    }
 	    
-	    public static void TC_13() throws InterruptedException
+	    @Test
+		public void TC_13() throws InterruptedException
 	    {
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("TC13");
 			OpenUrl("https://login.salesforce.com");
+			Thread.sleep(6000);
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
 			EnterText(username, "kikkeri.rachana@gmail.com", "Username");
 		
@@ -703,7 +763,36 @@ public class testsfdc extends ReusableMethods {
 			WebElement accountslink = driver.findElement(By.xpath("//*[@id=\"bodyCell\"]/div[3]/div[2]/table/tbody/tr[1]/td[1]/a"));
 			Click(accountslink,"Accounts");
 			Thread.sleep(3000);	
-			WebElement mergeaccounts = driver.findElement(By.xpath("//*[@id=\"toolsContent\"]/tbody/tr/td[2]/div/div/div/ul/li[4]/span"));
+			
+			WebElement goBtn = driver.findElement(By.xpath("//*[@id=\"filter_element\"]/div/span/span[1]/input"));
+			Click(goBtn,"Go");
+			Thread.sleep(10000);
+			WebElement table = driver.findElement(By.xpath("//*[@id=\"ext-gen16\"]/div/table"));
+			List<WebElement> rows = table.findElements(By.tagName("tr"));
+			
+			for(int i =0;i< rows.size();i++) {
+				List<WebElement> header = rows.get(i).findElements(By.tagName("th"));
+				for(int j=0;j<header.size();j++)
+				{
+					System.out.print(header.get(j).getText());
+				}
+				
+				header = rows.get(i).findElements(By.tagName("td"));
+				for(int j=0;j<header.size();j++)
+				{
+					System.out.print(header.get(j).getText());
+				}
+				System.out.println("");
+				Thread.sleep(4000);
+				
+			}
+			WebElement accntname = driver.findElement(By.xpath("//*[@id=\"0016g00000CVx1E_Name\"]/a/span"));
+			System.out.println(accntname.getText());
+
+			WebElement full = driver.findElement(By.xpath("//*[@id=\"ext-gen11\"]"));
+			System.out.print(full.getText());
+			
+			/*WebElement mergeaccounts = driver.findElement(By.xpath("//*[@id=\"toolsContent\"]/tbody/tr/td[2]/div/div/div/ul/li[4]/span"));
 			Thread.sleep(3000);
 			Click(mergeaccounts,"Merge accounts");
 			Thread.sleep(3000);
@@ -720,11 +809,17 @@ public class testsfdc extends ReusableMethods {
 		    Thread.sleep(3000);
 		    WebElement nextBtn = driver.findElement(By.xpath("//*[@id=\"stageForm\"]/div/div[2]/div[1]/div/input[1]"));
 		    Click(nextBtn,"Next button");
-		    Thread.sleep(3000);
+		    Thread.sleep(3000);*/
+			Thread.sleep(3000);
+			CloseBrowser();
+			
 		    
 	    }
-	    public static void TC_14() throws InterruptedException
+	    @Test
+		public void TC_14() throws InterruptedException
 	    {
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("TC14");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -765,49 +860,17 @@ public class testsfdc extends ReusableMethods {
 			WebElement saverunreport = driver.findElement(By.xpath("//*[@id=\"ext-gen280\"]"));
 			Click(saverunreport,"Save and run report");
 			Thread.sleep(6000);
-	    	
+			CloseBrowser();
+			
+			
 	    }
 	    
-	    public static void TC_15() throws InterruptedException
+	
+	    @Test
+		public void TC_16() throws InterruptedException
 	    {
-	    	logger = report.startTest("TC15");
-			OpenUrl("https://login.salesforce.com");
-			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
-			EnterText(username, "kikkeri.rachana@gmail.com", "Username");
-		
-			WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
-			EnterText(password, "rkikkeri13$", "password");
-			logger.log(LogStatus.INFO,"Able to get the text field");
-			
-			WebElement loginBtn = driver.findElement(By.xpath("//*[@id=\"Login\"]"));
-			loginBtn.click();
-			Thread.sleep(3000);
-			
-			WebElement plusBtn = driver.findElement(By.xpath("//*[@id=\"AllTab_Tab\"]/a/img"));
-			Click(plusBtn,"Plus button");
-			Thread.sleep(3000);
-			WebElement opportunities = driver.findElement(By.xpath("//*[@id=\"bodyCell\"]/div[3]/div[2]/table/tbody/tr[11]/td[2]/a"));
-			Click(opportunities,"Opportunities");
-			Thread.sleep(3000);
-			String[] exp = {"All Opportunities", "Closing Next Month", "Closing This Month", "My Opportunities", "New Last Week", "New This Week", "Opportunity Pipeline", "Private", "Recently Viewed Opportunities", "Won"}; 
-			WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"fcf\"]"));  
-			        Select select = new Select(dropdown);  
-
-			        List<WebElement> options = select.getOptions();  
-			        for(WebElement we:options)  
-			        {  
-			         for (int i=0; i<exp.length; i++){
-			             if (we.getText().equals(exp[i])){
-			             System.out.println("Matched");
-			             logger.log(LogStatus.PASS, "All the dropdown content found");
-			             } 
-			           }
-			         }  
-			
-			
-	    }
-	    public static void TC_16() throws InterruptedException
-	    {
+	    	initializeDriver();
+			CreateReport();
 	    	logger = report.startTest("TC16");
 			OpenUrl("https://login.salesforce.com");
 			WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -831,7 +894,7 @@ public class testsfdc extends ReusableMethods {
 			Click(newBtn,"New Button");
 			Thread.sleep(3000);
 	    	WebElement opportunity = driver.findElement(By.xpath("//*[@id=\"opp3\"]"));
-	    	EnterText(opportunity,"Rachana","Opportunity text box");
+	    	EnterText(opportunity,"TestNGtesting","Opportunity text box");
 	    	WebElement accntname = driver.findElement(By.xpath("//*[@id=\"opp4\"]"));
 	    	EnterText(accntname,"Dickenson plc","Account name");
 	    	Thread.sleep(3000);
@@ -845,16 +908,19 @@ public class testsfdc extends ReusableMethods {
 	    	 
 	    	EnterText(probability,"10","Probability");
 	    	WebElement pri = driver.findElement(By.xpath("//*[@id=\"opp17\"]"));
-	    	EnterText(pri,"rachana","Primary campaign source");
+	    	EnterText(pri,"rachanacd","Primary campaign source");
 	    	WebElement saveBtn= driver.findElement(By.xpath("//*[@id=\"bottomButtonRow\"]/input[1]"));
 	    	Click(saveBtn,"Save");
 	    	Thread.sleep(6000);
 	    	
-	    	
+	    	CloseBrowser();
+			
 	    }
-	     public static void TC_17() throws InterruptedException
+	     @Test
+		public void TC_17() throws InterruptedException
 	     {
-	    	 
+	    	 initializeDriver();
+				CreateReport();
 	    	    logger = report.startTest("TC17");
 				OpenUrl("https://login.salesforce.com");
 				WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -877,12 +943,16 @@ public class testsfdc extends ReusableMethods {
 				WebElement opppipe = driver.findElement(By.xpath("//*[@id=\"toolsContent\"]/tbody/tr/td[1]/div/div[1]/div[1]/ul/li[1]/a"));
 				Click(opppipe,"Opportunity pipeline");
 				Thread.sleep(6000);
+				CloseBrowser();
 				
 				
 				
 	     }
-	     public static void TC_18() throws InterruptedException
+	     @Test
+		public void TC_18() throws InterruptedException
 	     {
+	    	 initializeDriver();
+				CreateReport();
 	    	 logger = report.startTest("TC18");
 				OpenUrl("https://login.salesforce.com");
 				WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -905,10 +975,14 @@ public class testsfdc extends ReusableMethods {
 				WebElement stuck = driver.findElement(By.xpath("//*[@id=\"toolsContent\"]/tbody/tr/td[1]/div/div[1]/div[1]/ul/li[2]/a"));
 				Click(stuck,"Stuck opportunitities");
 				Thread.sleep(6000);
-	    	 
+				CloseBrowser();
+				
 	     }
-	     public static void TC_19() throws InterruptedException
+	     @Test
+		public void TC_19() throws InterruptedException
 	     {
+	    	 initializeDriver();
+				CreateReport();
 	    	    logger = report.startTest("TC19");
 				OpenUrl("https://login.salesforce.com");
 				WebElement username = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -935,11 +1009,14 @@ public class testsfdc extends ReusableMethods {
 				WebElement runreport = driver.findElement(By.xpath("//*[@id=\"lead_summary\"]/table/tbody/tr[3]/td/input"));
 				Click(runreport,"Run report");
 				Thread.sleep(6000);
-				//Edit the acct name acc456
 				
+				//Edit the acct name acc456
+				CloseBrowser();
+				CloseReport();
+	     }
 	     }
 	 
-		}
+		
 		
 		
 
