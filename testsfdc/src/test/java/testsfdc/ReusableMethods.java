@@ -53,7 +53,7 @@ public class ReusableMethods {
 		} else {
 			logger.log(LogStatus.INFO, objName + " Textbox is found");
 			element.sendKeys(text);
-		}
+		}//Salesforce
 	}
 
 
