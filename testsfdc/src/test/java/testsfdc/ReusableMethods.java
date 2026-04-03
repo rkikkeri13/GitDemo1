@@ -6,6 +6,9 @@ import java.util.Date;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -19,35 +22,37 @@ public class ReusableMethods {
 	static ExtentTest logger;
 	static ExtentReports report;
 	static WebDriver driver;
-	public static void initializeDriver() throws InterruptedException
+	
+
+	public void initializeDriver() throws InterruptedException
 	{
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 	}
-
-	public static void OpenUrl(String url) {
+    
+	public void OpenUrl(String url) {
 		driver.get(url);
 		driver.manage().window().maximize();
 		return;
 		
 	}
-	public static void CloseBrowser() {
+	public void CloseBrowser() {
 		driver.quit();
 	}
 
-	public static void CloseReport() {
+	public void CloseReport() {
 		report.flush();
 	}
 
 	
 	
-	public static void CreateReport() {
+	public void CreateReport() {
 		String fileName = new SimpleDateFormat("'SFDCReport_'YYYYMMddHHmm'.html'").format(new Date());
 		String path = "C:\\Users\\kikke\\OneDrive\\Documents\\Rachana work\\Extent Reports\\" + fileName;
 		report = new ExtentReports(path);
 	}
 	
-	public static void EnterText(WebElement element, String text, String objName) {
+	public void EnterText(WebElement element, String text, String objName) {
 		if (element == null || !element.isDisplayed()) {
 			logger.log(LogStatus.ERROR, objName + " Textbox is not found.");
 		} else {
@@ -58,7 +63,7 @@ public class ReusableMethods {
 
 
 
-	public static void Click(WebElement element, String objName) {
+	public void Click(WebElement element, String objName) {
 		if (element == null || !element.isDisplayed()) {
 			logger.log(LogStatus.ERROR, objName + " Element is not found.");
 		} else {
